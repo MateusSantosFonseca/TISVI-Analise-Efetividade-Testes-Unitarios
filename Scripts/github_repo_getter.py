@@ -17,7 +17,7 @@ def get_repositorios(headers, query):
     possui_proxima_pagina = response["data"]["search"]["pageInfo"]["hasNextPage"] 
     repositorios_retornados = response["data"]["search"]["nodes"]
 
-    while (quantidade_execucoes < 10 and possui_proxima_pagina):
+    while (quantidade_execucoes < 100 and possui_proxima_pagina):
         query_final = query.replace("{placeholder}", ', after: "%s"' % cursor_final_atual)
         response = requisitar_repositorios(headers, query_final)
         
