@@ -14,6 +14,7 @@ def mainScript():
     repos_com_coverage = get_repos_com_coverage(repositorios)
     repos_com_total_bug_issues = get_repos_total_bug_issues(repos_com_coverage, headers, query_issues)
     
+    path_repos_baixados = list()
     deseja_mostrar_progresso_download = easygui.ynbox("Ao fazer o download dos repositórios, você deseja que o progresso seja mostrado?",  "Mostrar progresso de download", ('Sim', 'Não'))
     
     if(deseja_mostrar_progresso_download is not None):
@@ -21,9 +22,10 @@ def mainScript():
         if(not path):
             print("Nenhum diretório foi selecionado, o programa foi interrompido.")
         else:
-            baixar_repositorios(path, repos_com_total_bug_issues, deseja_mostrar_progresso_download)
+            path_repos_baixados = baixar_repositorios(path, repos_com_total_bug_issues, deseja_mostrar_progresso_download)
     else:
         print("Não foi escolhida nenhuma opção, o programa foi interrompido.")
 
+    print(path_repos_baixados)
 
 mainScript()

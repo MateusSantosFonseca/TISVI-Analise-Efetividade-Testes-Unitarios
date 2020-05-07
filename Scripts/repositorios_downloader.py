@@ -34,7 +34,7 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
         countRepositorionsBaixados += 1
         splitted_repo = repositorio.split(',')
         nome_repositorio = splitted_repo[1]
-        path_repo_baixado = repos_path + "/" + "{:04n}".format(countRepositorionsBaixados) + "_" + nome_repositorio
+        path_repo_baixado = repos_path + "\\" + "{:04n}".format(countRepositorionsBaixados) + "_" + nome_repositorio
 
         repos_baixados_list_path.append(path_repo_baixado)
 
@@ -69,6 +69,7 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
     print(f"\nLembre-se de deletar os repositórios em: {repos_path}!")
     exportar_log_downloads(repos_path, log_downloads)
     time.sleep(3)
+    return repos_baixados_list_path
     
     
     
