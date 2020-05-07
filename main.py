@@ -28,8 +28,8 @@ def main_script():
         print("\nNão foi escolhida nenhuma opção, o programa foi interrompido.")
     
     repos_com_total_loc_testes = get_repos_total_loc_teste(repos_com_total_bug_issues, path_repos_baixados)
-    
     exportar_repos_com_infos_csv(repos_com_total_loc_testes)
+    
     print("\nO Script foi finalizado com sucesso.")   
     
 main_script()

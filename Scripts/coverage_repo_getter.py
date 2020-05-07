@@ -21,10 +21,14 @@ def get_repos_com_coverage(repositorios):
             soup = BeautifulSoup(content, 'lxml')
             coverage_repositorio = soup.find("div", {"id":"repoShowPercentage"})
             
+            coverage_repositorio_texto = coverage_repositorio.text.strip()
+            if (coverage_repositorio_texto.__contains__("master")):
+                coverage_repositorio_texto = coverage_repositorio_texto.split("master")[0].strip()
+                                
             nome_owner_repositorio = repositorio['nameWithOwner'].split('/')
             
             repos_com_coverage.append(
-                nome_owner_repositorio[0] + "," + nome_owner_repositorio[1] + "," + repositorio['url'] + "," + coverage_repositorio.text)
+                nome_owner_repositorio[0] + "," + nome_owner_repositorio[1] + "," + repositorio['url'] + "," + coverage_repositorio_texto)
 
             quantidade_repos_com_coverage += 1
             
