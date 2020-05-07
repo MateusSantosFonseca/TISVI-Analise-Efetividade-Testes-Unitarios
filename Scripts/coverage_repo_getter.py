@@ -35,5 +35,6 @@ def get_repos_com_coverage(repositorios):
             quantidade_repos_sem_coverage += 1
             if(quantidade_repos_sem_coverage % 30 == 0):
                 print(f"Até o momento, {quantidade_repos_sem_coverage} foram descartados.")
-        
+    
+    print("A etapa de recuperação de coverage dos repositórios foi finalizada.")    
     return repos_com_coverage
