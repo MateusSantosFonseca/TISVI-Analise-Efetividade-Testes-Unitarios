@@ -27,5 +27,5 @@ def get_repositorios(headers, query):
         possui_proxima_pagina = response["data"]["search"]["pageInfo"]["hasNextPage"] 
         cursor_final_atual = response["data"]["search"]["pageInfo"]["endCursor"] 
     
-    print("A etapa de recuperação dos repositórios foi finalizada.") 
+    print("\nA etapa de recuperação dos repositórios foi finalizada.") 
     return repositorios_retornados

@@ -21,15 +21,15 @@ def main_script():
     if(deseja_mostrar_progresso_download is not None):
         path = easygui.diropenbox()
         if(not path):
-            print("Nenhum diretório foi selecionado, o programa foi interrompido.")
+            print("\nNenhum diretório foi selecionado, o programa foi interrompido.")
         else:
             path_repos_baixados = baixar_repositorios(path, repos_com_total_bug_issues, deseja_mostrar_progresso_download)
     else:
-        print("Não foi escolhida nenhuma opção, o programa foi interrompido.")
+        print("\nNão foi escolhida nenhuma opção, o programa foi interrompido.")
     
     repos_com_total_loc_testes = get_repos_total_loc_teste(repos_com_total_bug_issues, path_repos_baixados)
     
     exportar_repos_com_infos_csv(repos_com_total_loc_testes)
-    print("O Script foi finalizado com sucesso.")   
+    print("\nO Script foi finalizado com sucesso.")   
     
 main_script()

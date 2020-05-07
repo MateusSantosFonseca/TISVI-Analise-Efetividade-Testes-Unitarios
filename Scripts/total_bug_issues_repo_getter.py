@@ -24,7 +24,7 @@ def get_repos_total_bug_issues(repositorios, headers, query):
 
         repositorios[i] += "," + str(quantidade_bug_issues_repositorio)
 
-    print("A etapa de recuperação de bug issues dos repositórios foi finalizada.") 
+    print("\nA etapa de recuperação de bug issues dos repositórios foi finalizada.") 
     return repositorios
 
         

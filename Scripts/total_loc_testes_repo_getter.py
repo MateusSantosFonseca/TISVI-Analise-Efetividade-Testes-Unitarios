@@ -33,5 +33,5 @@ def get_repos_total_loc_teste(repos_com_total_bug_issues, path_repos_baixados):
         linhas_loc_teste = contar_loc_teste_repo(path_repositorio)
         repos_com_total_loc_testes[i] += "," + str(linhas_loc_teste)
     
-    print("A etapa de recuperação de LOC de teste dos repositórios foi finalizada.") 
+    print("\nA etapa de recuperação de LOC de teste dos repositórios foi finalizada.") 
     return repos_com_total_loc_testes

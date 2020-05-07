@@ -18,4 +18,4 @@ def exportar_repos_com_infos_csv(repos_com_todas_informacoes):
 
             csv_writer.writerow(dict_repo_info.values())
 
-    print("A etapa de exportação dos repositórios com todas as informações obtidas para um arquivo .csv foi finalizada.") 
+    print("\nA etapa de exportação dos repositórios com todas as informações obtidas para um arquivo .csv foi finalizada.") 
