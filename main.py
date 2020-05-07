@@ -5,11 +5,11 @@ from Scripts.github_repo_getter import get_repositorios
 from Scripts.coverage_repo_getter import get_repos_com_coverage
 from Scripts.total_bug_issues_repo_getter import get_repos_total_bug_issues
 from Scripts.repositorios_downloader import baixar_repositorios
+from Scripts.total_loc_testes_repo_getter import get_repos_total_loc_teste
 import easygui
 import ctypes 
 
-
-def mainScript():
+def main_script():
     repositorios = get_repositorios(headers, query_repositorios)
     repos_com_coverage = get_repos_com_coverage(repositorios)
     repos_com_total_bug_issues = get_repos_total_bug_issues(repos_com_coverage, headers, query_issues)
@@ -25,7 +25,9 @@ def mainScript():
             path_repos_baixados = baixar_repositorios(path, repos_com_total_bug_issues, deseja_mostrar_progresso_download)
     else:
         print("Não foi escolhida nenhuma opção, o programa foi interrompido.")
-
-    print(path_repos_baixados)
-
-mainScript()
+    
+    repos_com_total_loc_testes = get_repos_total_loc_teste(repos_com_total_bug_issues, path_repos_baixados)
+    
+    print("O Script foi finalizado com sucesso.")   
+    
+main_script()
