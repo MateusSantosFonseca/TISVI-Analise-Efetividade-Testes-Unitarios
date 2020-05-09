@@ -1,4 +1,4 @@
-### Análise da efetividade de testes unitários nos projetos JavaScript mais populares
+### Análise da efetividade de testes unitários nos projetos JavaScript mais populares que possuem badge de coverage
 
 #### Contexto do trabalho
 
