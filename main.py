@@ -11,6 +11,8 @@ import easygui
 import ctypes 
 
 def main_script():
+    print("\nO Script foi iniciado.")  
+    
     repositorios = get_repositorios(headers, query_repositorios)
     repos_com_coverage = get_repos_com_coverage(repositorios)
     repos_com_total_bug_issues = get_repos_total_bug_issues(repos_com_coverage, headers, query_issues)
