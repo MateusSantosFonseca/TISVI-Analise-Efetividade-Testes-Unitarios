@@ -15,6 +15,7 @@ lxml==4.5.0
 mccabe==0.6.1
 pycodestyle==2.5.0
 pylint==2.5.2
+python-dateutil==2.8.1
 requests==2.23.0
 six==1.14.0
 smmap==3.0.4
