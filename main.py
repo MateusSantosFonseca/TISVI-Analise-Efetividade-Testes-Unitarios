@@ -7,6 +7,7 @@ from Scripts.total_bug_issues_repo_getter import get_repos_total_bug_issues
 from Scripts.repositorios_downloader import baixar_repositorios
 from Scripts.total_loc_testes_repo_getter import get_repos_total_loc_teste
 from Scripts.exportador_csv import exportar_repos_com_infos_csv
+from Scripts.analisador_resultados import get_coeficientes_correlacao_pearson
 import easygui
 import ctypes 
 
@@ -31,6 +32,7 @@ def main_script():
     
     repos_com_total_loc_testes = get_repos_total_loc_teste(repos_com_total_bug_issues, path_repos_baixados)
     exportar_repos_com_infos_csv(repos_com_total_loc_testes)
+    get_coeficientes_correlacao_pearson()
     
     print("\nO Script foi finalizado com sucesso.")   
     

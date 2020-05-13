@@ -2,6 +2,13 @@ import pathlib
 import csv
 import pandas as pd
 
+def exportar_coeficientes(coeficiente_bug_locs_teste, coeficiente_bugs_coverages):
+    path = str(pathlib.Path().absolute()) + "\\coeficientes_pearson_de_valores_dos_repos.txt"
+    corpo = f"Valores de coeficientes de correlação de Pearson: \n\nCoeficiente de Pearson obtidos pelas medidas BUG Issues e LOC de testes: {coeficiente_bug_locs_teste}.\nCoeficiente de Pearson obtidos pelas medidas BUG Issues e Coverage: {coeficiente_bugs_coverages}.\n"
+    file = open(path, "w+")
+    file.write(corpo)
+    file.close
+
 def get_coeficientes_correlacao_pearson():
     path_arquivo_csv = str(pathlib.Path().absolute()) + "\\repositorios_analisados.csv"
     lista_bug_issues = []
@@ -28,4 +35,4 @@ def get_coeficientes_correlacao_pearson():
     coeficiente_correlacao_pearson_bug_locs_teste = panda_bug_issues.corr(panda_locs_teste)
     coeficiente_correlacao_pearson_bugs_coverages = panda_bug_issues.corr(panda_coverages)
     
-    return f"{str(coeficiente_correlacao_pearson_bug_locs_teste)},{str(coeficiente_correlacao_pearson_bugs_coverages)}"
+    exportar_coeficientes(str(coeficiente_correlacao_pearson_bug_locs_teste), str(coeficiente_correlacao_pearson_bugs_coverages))
