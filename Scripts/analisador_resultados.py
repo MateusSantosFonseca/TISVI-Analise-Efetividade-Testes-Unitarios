@@ -28,4 +28,4 @@ def get_coeficientes_correlacao_pearson():
     coeficiente_correlacao_pearson_bug_locs_teste = panda_bug_issues.corr(panda_locs_teste)
     coeficiente_correlacao_pearson_bugs_coverages = panda_bug_issues.corr(panda_coverages)
     
-    return str(coeficiente_correlacao_pearson_bug_locs_teste) + "," + str(coeficiente_correlacao_pearson_bugs_coverages)
+    return f"{str(coeficiente_correlacao_pearson_bug_locs_teste)},{str(coeficiente_correlacao_pearson_bugs_coverages)}"
