@@ -23,9 +23,9 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
     
     try:
         os.mkdir(repos_path)
-        print("\nDiretório ", repos_path, "criado.")
+        print("\nDiretório ", repos_path, "criado.\n")
     except FileExistsError:
-        print("\nDiretório:", repos_path, "não foi criado pois já existe.")
+        print("\nDiretório:", repos_path, "não foi criado pois já existe.\n")
 
     count_repos_baixados = 0
     log_downloads = ""
@@ -42,7 +42,7 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
             if not os.path.exists(path_repo_baixado):
                 os.mkdir(path_repo_baixado)
                 print("\nVoce está baixando o repositório: " + nome_repositorio + " ele é o " + str(count_repos_baixados) + "° repositório baixado.")
-                time.sleep(2)
+                time.sleep(1)
                 
                 if(deseja_mostrar_progresso_download):
                     Repo.clone_from(splitted_repo[2], path_repo_baixado, progress=ProgressPrinter())

@@ -9,9 +9,6 @@ def get_repos_com_coverage(repositorios):
     repos_com_coverage = []
 
     for repositorio in repositorios:
-        if(quantidade_repos_com_coverage >= 100):
-            break
-        
         url = f"https://coveralls.io/github/{repositorio['nameWithOwner']}"
         
         try:
@@ -32,13 +29,15 @@ def get_repos_com_coverage(repositorios):
 
             quantidade_repos_com_coverage += 1
             
-            if(quantidade_repos_com_coverage % 15 == 0):
+            if(quantidade_repos_com_coverage % 10 == 0):
                 print(f"Já foram encontrados {quantidade_repos_com_coverage} repositórios com coverage.")
 
         except:
             quantidade_repos_sem_coverage += 1
-            if(quantidade_repos_sem_coverage % 30 == 0):
+            if(quantidade_repos_sem_coverage % 25 == 0):
                 print(f"Até o momento, {quantidade_repos_sem_coverage} foram descartados.")
     
+    print(f"\n{quantidade_repos_com_coverage} repositórios com coverage foram encontrados.")
+    print(f"\n{quantidade_repos_sem_coverage} repositórios sem coverage foram descartados.")
     print("\nA etapa de recuperação de coverage dos repositórios foi finalizada.")    
     return repos_com_coverage
