@@ -72,8 +72,8 @@ def get_regressao_linear_e_coeficiente_pearson():
                 else:
                     linha_splitada = linha.split(',')
                     lista_bug_issues.append(float(linha_splitada[3]))
-                    lista_locs_teste.append(float(linha_splitada[2].replace("%","")))
-                    lista_coverages.append(float(linha_splitada[5]))
+                    lista_coverages.append(float(linha_splitada[2].replace("%","")))
+                    lista_locs_teste.append(float(linha_splitada[5]))
 
     deseja_mostrar_imagem = easygui.ynbox("Você deseja ver os gráficos que serão exportados?",  "Mostrar gráficos?", ('Sim', 'Não'))
     
