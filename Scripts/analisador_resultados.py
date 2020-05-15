@@ -1,16 +1,63 @@
 import pathlib
 import csv
-import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
+import easygui
+import shutil
+import os
 
-def exportar_coeficientes(coeficiente_bug_locs_teste, coeficiente_bugs_coverages):
-    path = str(pathlib.Path().absolute()) + "\\coeficientes_pearson_de_valores_dos_repos.txt"
-    corpo = f"Valores de coeficientes de correlação de Pearson: \n\nCoeficiente de Pearson obtidos pelas medidas BUG Issues e LOC de testes: {coeficiente_bug_locs_teste}.\nCoeficiente de Pearson obtidos pelas medidas BUG Issues e Coverage: {coeficiente_bugs_coverages}.\n"
+#Variável X: variável independente. Variável Y: variável dependente.
+def exportar_grafico_regressao_linear(lista_variavel_independente_x, lista_variavel_dependente_y, variavel_x, variavel_y, deseja_mostrar_imagem):
+    path = str(pathlib.Path().absolute()) + f"\\ResultadosEstatisticos\\regressao_linear_{variavel_x.lower().replace(' ','')}_{variavel_y.lower().replace(' ','')}.png"
+    variavel_independente_x = np.array(lista_variavel_independente_x)
+    variavel_dependente_y = np.array(lista_variavel_dependente_y)
+    resultado = stats.linregress(variavel_independente_x, variavel_dependente_y)
+    mn = np.min(variavel_independente_x)
+    mx = np.max(variavel_independente_x)
+    x1 = np.linspace(mn, mx, 500)
+    y1 = resultado.slope * x1 + resultado.intercept
+    
+    plt.rcParams['figure.figsize'] = (9,5)
+    plt.plot(variavel_independente_x, variavel_dependente_y, 'go', markersize=3)
+    plt.plot(x1, y1, 'orange')
+    plt.title(f"Regressão Linear entre {variavel_x} e {variavel_y}", pad=10)
+    plt.xlabel(variavel_x, labelpad=10)
+    plt.ylabel(variavel_y, labelpad=10)
+    plt.savefig(path)
+    if (deseja_mostrar_imagem):
+        plt.show()
+    
+    return resultado
+
+def montar_corpo_texto_valores_estatisticos(resultado_loc_bugs, resultado_coverage_bugs):
+    valores_estatisticos_texto = f"""\n\
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: {resultado_loc_bugs.slope}
+    Intercepto: {resultado_loc_bugs.intercept}
+    Erro padrão: {resultado_loc_bugs.stderr}
+    Valor P: {resultado_loc_bugs.pvalue}
+    Valor R: {resultado_loc_bugs.rvalue}\n
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: {resultado_coverage_bugs.slope}
+    Intercepto: {resultado_coverage_bugs.intercept}
+    Erro padrão: {resultado_coverage_bugs.stderr}
+    Valor P: {resultado_coverage_bugs.pvalue}
+    Valor R: {resultado_coverage_bugs.rvalue}\n\n
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+    """
+    return valores_estatisticos_texto
+
+def exportar_resultado_estatistico(valores_estatisticos):
+    path = str(pathlib.Path().absolute()) + "\\ResultadosEstatisticos\\valores_estatisticos_obtidos.txt"
     file = open(path, "w+")
-    file.write(corpo)
+    file.write(valores_estatisticos)
     file.close
 
-def get_coeficientes_correlacao_pearson():
+def get_regressao_linear_e_coeficiente_pearson():
     path_arquivo_csv = str(pathlib.Path().absolute()) + "\\repositorios_analisados.csv"
+    path_resultados_estatisticos = str(pathlib.Path().absolute()) + "\\ResultadosEstatisticos"
+    
     lista_bug_issues = []
     lista_locs_teste = []
     lista_coverages = []
@@ -28,11 +75,18 @@ def get_coeficientes_correlacao_pearson():
                     lista_locs_teste.append(float(linha_splitada[2].replace("%","")))
                     lista_coverages.append(float(linha_splitada[5]))
 
-    panda_bug_issues = pd.Series(lista_bug_issues)
-    panda_locs_teste = pd.Series(lista_locs_teste)
-    panda_coverages = pd.Series(lista_coverages)
-
-    coeficiente_correlacao_pearson_bug_locs_teste = panda_bug_issues.corr(panda_locs_teste)
-    coeficiente_correlacao_pearson_bugs_coverages = panda_bug_issues.corr(panda_coverages)
+    deseja_mostrar_imagem = easygui.ynbox("Você deseja ver os gráficos que serão exportados?",  "Mostrar gráficos?", ('Sim', 'Não'))
     
-    exportar_coeficientes(str(coeficiente_correlacao_pearson_bug_locs_teste), str(coeficiente_correlacao_pearson_bugs_coverages))
+    if(deseja_mostrar_imagem is None):
+        deseja_mostrar_imagem = False
+
+    try:
+        os.mkdir(path_resultados_estatisticos)
+    except FileExistsError:
+        pass
+    
+    resultado_locs_bugs = exportar_grafico_regressao_linear(lista_locs_teste, lista_bug_issues, "LOC de testes", "BUG Issues", deseja_mostrar_imagem)
+    resultado_coverage_bugs = exportar_grafico_regressao_linear(lista_coverages, lista_bug_issues, "Coverage", "BUG Issues", deseja_mostrar_imagem)
+    
+    resultado_texto = montar_corpo_texto_valores_estatisticos(resultado_locs_bugs, resultado_coverage_bugs)
+    exportar_resultado_estatistico(resultado_texto)

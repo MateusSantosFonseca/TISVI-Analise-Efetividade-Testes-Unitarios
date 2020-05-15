@@ -1,4 +1,0 @@
-Valores de coeficientes de correlação de Pearson: 
-
-Coeficiente de Pearson obtidos pelas medidas BUG Issues e LOC de testes: -0.21172229606080004.
-Coeficiente de Pearson obtidos pelas medidas BUG Issues e Coverage: -0.000948009865119287.

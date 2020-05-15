@@ -1,0 +1,18 @@
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: -4.724188648363844
+    Intercepto: 738.5089111352756
+    Erro padrão: 2.4535124267254504
+    Valor P: 0.057767905448977266
+    Valor R: -0.2117222960608001
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -3.71943252854045e-05
+    Intercepto: 364.7824703597994
+    Erro padrão: 0.004414180495059798
+    Valor P: 0.9932982666826212
+    Valor R: -0.000948009865119287
+
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+    
