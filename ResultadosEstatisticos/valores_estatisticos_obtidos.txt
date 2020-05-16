@@ -1,3 +1,4 @@
+    Para todos repositórios:
 
     Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
     Inclinação: -3.71943252854045e-05
@@ -14,5 +15,21 @@
     Valor R: -0.2117222960608001
 
 
-    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.001746215781443243
+    Intercepto: 301.8941929395352
+    Erro padrão: 0.0036476748276407845
+    Valor P: 0.6341837517115105
+    Valor R: 0.06688413578019543
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: 0.25933515529800705
+    Intercepto: 303.2281721115274
+    Erro padrão: 2.344570720264331
+    Valor P: 0.9123590194423801
+    Valor R: 0.015486771173783435
     
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
