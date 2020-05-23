@@ -34,8 +34,32 @@ def exportar_grafico_regressao_linear(lista_variavel_independente_x, lista_varia
     
     return resultado
 
+def interpreta_resultado_valor_r(valor_r):
+    valor_r_float = float(valor_r)
+    
+    if(valor_r_float == 0):
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, não existe correlação."
+    
+    elif(valor_r_float > -0.3 and valor_r_float < 0.3):
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, a correlação é desprezível."
+    
+    elif((valor_r_float >= 0.3 and valor_r_float < 0.5) or (valor_r_float <= -0.3 and valor_r_float > -0.5)):
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, a correlação é fraca."
+    
+    elif((valor_r_float >= 0.5 and valor_r_float < 0.7) or (valor_r_float <= -0.5 and valor_r_float > -0.7)):
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, a correlação é moderada."
+    
+    elif((valor_r_float >= 0.7 and valor_r_float < 0.9) or (valor_r_float <= -0.7 and valor_r_float > -0.9)):
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, a correlação é forte."
+    
+    else:
+        return f"De acordo com o valor R obtido: {str(valor_r_float)}, a correlação é muito forte."
+    
+    
+
 def montar_corpo_texto_valores_estatisticos(resultado_loc_bugs, resultado_coverage_bugs, locs_nz_resultado_loc_bugs=None,
                                             locs_nz_resultado_coverage_bugs=None):
+    
     valores_estatisticos_texto = "    Para todos repositórios:\n"
     valores_estatisticos_texto += f"""\n\
     Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
@@ -44,12 +68,17 @@ def montar_corpo_texto_valores_estatisticos(resultado_loc_bugs, resultado_covera
     Erro padrão: {resultado_loc_bugs.stderr}
     Valor P: {resultado_loc_bugs.pvalue}
     Valor R: {resultado_loc_bugs.rvalue}\n
+    Interpretação do Coeficiente de Pearson:
+    {interpreta_resultado_valor_r(resultado_loc_bugs.rvalue)}
+    
     Valores estatísticos para X = Coverage e Y = BUG Issues:
     Inclinação: {resultado_coverage_bugs.slope}
     Intercepto: {resultado_coverage_bugs.intercept}
     Erro padrão: {resultado_coverage_bugs.stderr}
     Valor P: {resultado_coverage_bugs.pvalue}
-    Valor R: {resultado_coverage_bugs.rvalue}\n\n
+    Valor R: {resultado_coverage_bugs.rvalue}\n
+    Interpretação do Coeficiente de Pearson:
+    {interpreta_resultado_valor_r(resultado_coverage_bugs.rvalue)}\n\n
     """
     if(locs_nz_resultado_loc_bugs is not None):
         valores_estatisticos_texto += "Para repositórios com LOC de Testes > 0:\n"
@@ -60,20 +89,30 @@ def montar_corpo_texto_valores_estatisticos(resultado_loc_bugs, resultado_covera
     Erro padrão: {locs_nz_resultado_loc_bugs.stderr}
     Valor P: {locs_nz_resultado_loc_bugs.pvalue}
     Valor R: {locs_nz_resultado_loc_bugs.rvalue}\n
+    Interpretação do Coeficiente de Pearson:
+    {interpreta_resultado_valor_r(locs_nz_resultado_loc_bugs.rvalue)}\n
     Valores estatísticos para X = Coverage e Y = BUG Issues:
     Inclinação: {locs_nz_resultado_coverage_bugs.slope}
     Intercepto: {locs_nz_resultado_coverage_bugs.intercept}
     Erro padrão: {locs_nz_resultado_coverage_bugs.stderr}
     Valor P: {locs_nz_resultado_coverage_bugs.pvalue}
-    Valor R: {locs_nz_resultado_coverage_bugs.rvalue}
+    Valor R: {locs_nz_resultado_coverage_bugs.rvalue}\n
+    Interpretação do Coeficiente de Pearson:
+    {interpreta_resultado_valor_r(locs_nz_resultado_coverage_bugs.rvalue)}
     """
-    
-    valores_estatisticos_texto += "\n\n    Observação: O Valor R é o Coeficiente de Correlação de Pearson."
+    valores_estatisticos_texto += f"""\n\n    Observação: O Valor R é o Coeficiente de Correlação de Pearson.\n
+    Tabela com valores de referência para o Coeficiente de Pearson:\n
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    """
     
     return valores_estatisticos_texto
 
-def exportar_resultado_estatistico(valores_estatisticos):
-    path = str(pathlib.Path().absolute()) + "\\ResultadosEstatisticos\\valores_estatisticos_obtidos.txt"
+def exportar_resultado_estatistico(valores_estatisticos, resultados_linguagem_path, linguagem):
+    path = resultados_linguagem_path + f"\\{linguagem}_valores_estatisticos_obtidos.txt"
     file = open(path, "w+")
     file.write(valores_estatisticos)
     file.close
@@ -84,11 +123,9 @@ def criar_pasta(path):
     except FileExistsError:
         pass
 
-def get_regressao_linear_e_coeficiente_pearson():
-    path_base = str(pathlib.Path().absolute())
-    path_arquivo_csv = path_base + "\\repositorios_analisados.csv"
-    path_resultados_estatisticos = path_base + "\\ResultadosEstatisticos"
-    
+def get_regressao_linear_e_coeficiente_pearson(linguagem, resultados_linguagem_path):
+    path_arquivo_csv = resultados_linguagem_path + f"\\repositorios_{linguagem}_analisados.csv"
+
     #locs_nz = Sufixo que remete aos repositórios cuja quantidade de LOC de testes != 0
     
     lista_bug_issues = []
@@ -120,9 +157,7 @@ def get_regressao_linear_e_coeficiente_pearson():
                         locs_nz_lista_locs_teste.append(linha_loc_testes)
                         locs_nz_lista_coverages.append(linha_coverage)
                         
-    criar_pasta(path_resultados_estatisticos)
-    
-    path_todos_repos = path_resultados_estatisticos + "\\Todos_Repositorios"
+    path_todos_repos = resultados_linguagem_path + "Todos_Repositorios"
     criar_pasta(path_todos_repos)
     
     resultado_locs_bugs = exportar_grafico_regressao_linear(lista_locs_teste, lista_bug_issues, "LOC de testes",
@@ -135,7 +170,7 @@ def get_regressao_linear_e_coeficiente_pearson():
     
     # Análise dos repositórios que não tiveram LOC de testes zerados
     if(len(locs_nz_lista_locs_teste) > 0):
-        locs_nz_path_repos = path_resultados_estatisticos + "\\Apenas_Repositorios_com_LOC_Testes"
+        locs_nz_path_repos = resultados_linguagem_path + "\\Repositorios_LOC_Testes"
         criar_pasta(locs_nz_path_repos)
         
         locs_nz_resultado_locs_bugs = exportar_grafico_regressao_linear(
@@ -152,4 +187,5 @@ def get_regressao_linear_e_coeficiente_pearson():
     else:
         resultado_texto = montar_corpo_texto_valores_estatisticos(resultado_locs_bugs, resultado_coverage_bugs)
     
-    exportar_resultado_estatistico(resultado_texto)
+    exportar_resultado_estatistico(resultado_texto, resultados_linguagem_path, linguagem)
+    

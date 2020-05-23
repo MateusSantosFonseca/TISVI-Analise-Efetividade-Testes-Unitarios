@@ -1,8 +1,8 @@
 import pathlib
 import csv
 
-def exportar_repos_com_infos_csv(repos_com_todas_informacoes):
-    path_arquivo_csv = str(pathlib.Path().absolute()) + "\\repositorios_analisados.csv"
+def exportar_repos_com_infos_csv(repos_com_todas_informacoes, resultados_path, linguagem):
+    path_arquivo_csv = resultados_path + f"repositorios_{linguagem}_analisados.csv"
     with open(path_arquivo_csv, mode='w+') as arquivo_csv:
         csv_writer = csv.writer(arquivo_csv)
         
@@ -19,4 +19,4 @@ def exportar_repos_com_infos_csv(repos_com_todas_informacoes):
 
             csv_writer.writerow(dict_repo_info.values())
 
-    print("\nA etapa de exportação dos repositórios com todas as informações obtidas para um arquivo .csv foi finalizada.") 
+    print("A etapa de exportação dos repositórios com todas as informações obtidas para um arquivo .csv foi finalizada.") 

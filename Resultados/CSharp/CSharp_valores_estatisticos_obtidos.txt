@@ -1,0 +1,56 @@
+    Para todos repositórios:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.0016157447748580767
+    Intercepto: 234.43855791965137
+    Erro padrão: 0.002208686337422108
+    Valor P: 0.4784916994757268
+    Valor R: 0.2066207374367496
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.2066207374367496, a correlação é desprezível.
+    
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -0.5484794834409498
+    Intercepto: 320.52515101020623
+    Erro padrão: 4.176913794552045
+    Valor P: 0.8977042251486562
+    Valor R: -0.03787934453847704
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.03787934453847704, a correlação é desprezível.
+
+
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.0016157447748580767
+    Intercepto: 234.43855791965137
+    Erro padrão: 0.002208686337422108
+    Valor P: 0.4784916994757268
+    Valor R: 0.2066207374367496
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.2066207374367496, a correlação é desprezível.
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -0.5484794834409498
+    Intercepto: 320.52515101020623
+    Erro padrão: 4.176913794552045
+    Valor P: 0.8977042251486562
+    Valor R: -0.03787934453847704
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.03787934453847704, a correlação é desprezível.
+    
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+
+    Tabela com valores de referência para o Coeficiente de Pearson:
+
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    

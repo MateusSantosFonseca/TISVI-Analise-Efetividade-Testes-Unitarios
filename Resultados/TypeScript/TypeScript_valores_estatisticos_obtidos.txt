@@ -1,0 +1,56 @@
+    Para todos repositórios:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.012781234058345211
+    Intercepto: -5.745794921771676
+    Erro padrão: 0.0015672292331565113
+    Valor P: 2.3783379158284613e-11
+    Valor R: 0.7222205065326772
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.7222205065326772, a correlação é forte.
+    
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -6.501375578407971
+    Intercepto: 702.8510455095942
+    Erro padrão: 2.628958859811696
+    Valor P: 0.016200723525273762
+    Valor R: -0.3018627688068462
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.3018627688068462, a correlação é fraca.
+
+
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.012819434071750268
+    Intercepto: -8.35308482611245
+    Erro padrão: 0.0015815359829599097
+    Valor P: 3.236004875241519e-11
+    Valor R: 0.7229669273695836
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.7229669273695836, a correlação é forte.
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -6.542039681085187
+    Intercepto: 705.044633905567
+    Erro padrão: 2.6639532964019006
+    Valor P: 0.016971905137435447
+    Valor R: -0.30221315841731333
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.30221315841731333, a correlação é fraca.
+    
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+
+    Tabela com valores de referência para o Coeficiente de Pearson:
+
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    

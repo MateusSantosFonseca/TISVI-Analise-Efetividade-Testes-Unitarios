@@ -1,0 +1,56 @@
+    Para todos repositórios:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.00353553376592266
+    Intercepto: 114.31040992491808
+    Erro padrão: 0.001131745221933014
+    Valor P: 0.0044741706346982275
+    Valor R: 0.5298728350321273
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.5298728350321273, a correlação é moderada.
+    
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -2.1829019743624047
+    Intercepto: 420.959977651697
+    Erro padrão: 2.631509655898326
+    Valor P: 0.4146585004233543
+    Valor R: -0.16366777588470346
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.16366777588470346, a correlação é desprezível.
+
+
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.00353553376592266
+    Intercepto: 114.31040992491808
+    Erro padrão: 0.001131745221933014
+    Valor P: 0.0044741706346982275
+    Valor R: 0.5298728350321273
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.5298728350321273, a correlação é moderada.
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -2.1829019743624047
+    Intercepto: 420.959977651697
+    Erro padrão: 2.631509655898326
+    Valor P: 0.4146585004233543
+    Valor R: -0.16366777588470346
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.16366777588470346, a correlação é desprezível.
+    
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+
+    Tabela com valores de referência para o Coeficiente de Pearson:
+
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    

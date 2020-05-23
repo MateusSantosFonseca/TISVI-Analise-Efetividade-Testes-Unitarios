@@ -1,0 +1,56 @@
+    Para todos repositórios:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.0065812278533104625
+    Intercepto: 273.52070296932925
+    Erro padrão: 0.002744256052781096
+    Valor P: 0.018897882474565437
+    Valor R: 0.2636300629844727
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.2636300629844727, a correlação é desprezível.
+    
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -5.11455466936378
+    Intercepto: 778.8376482818458
+    Erro padrão: 2.589834314964686
+    Valor P: 0.051869115260535656
+    Valor R: -0.21956414084848558
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.21956414084848558, a correlação é desprezível.
+
+
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.00644987640873093
+    Intercepto: 280.3470491074905
+    Erro padrão: 0.0028413699705988993
+    Valor P: 0.02616136859447673
+    Valor R: 0.2567740942961566
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.2567740942961566, a correlação é desprezível.
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -4.9959900930433045
+    Intercepto: 774.964928244056
+    Erro padrão: 2.684573362610479
+    Valor P: 0.0667709811998962
+    Valor R: -0.21282356670114488
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.21282356670114488, a correlação é desprezível.
+    
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+
+    Tabela com valores de referência para o Coeficiente de Pearson:
+
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    

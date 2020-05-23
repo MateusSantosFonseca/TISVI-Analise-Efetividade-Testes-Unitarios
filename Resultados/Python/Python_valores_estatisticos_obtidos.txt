@@ -1,0 +1,56 @@
+    Para todos repositórios:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.014417959373896313
+    Intercepto: 434.75623621152454
+    Erro padrão: 0.008146243875985166
+    Valor P: 0.0814353008104824
+    Valor R: 0.21442192390533651
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.21442192390533651, a correlação é desprezível.
+    
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -4.450920538756481
+    Intercepto: 1104.4751616892186
+    Erro padrão: 12.078448237619083
+    Valor P: 0.7136971685513529
+    Valor R: -0.045659257632628104
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.045659257632628104, a correlação é desprezível.
+
+
+    Para repositórios com LOC de Testes > 0:
+
+    Valores estatísticos para X = LOCs de Teste e Y = BUG Issues:
+    Inclinação: 0.014187408365562745
+    Intercepto: 452.64241208349057
+    Erro padrão: 0.008325697244902761
+    Valor P: 0.09329968111825607
+    Valor R: 0.20990716661002515
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: 0.20990716661002515, a correlação é desprezível.
+
+    Valores estatísticos para X = Coverage e Y = BUG Issues:
+    Inclinação: -4.254118083194025
+    Intercepto: 1111.4625123280198
+    Erro padrão: 12.3558742809154
+    Valor P: 0.7317678893989394
+    Valor R: -0.043336873943678994
+
+    Interpretação do Coeficiente de Pearson:
+    De acordo com o valor R obtido: -0.043336873943678994, a correlação é desprezível.
+    
+
+    Observação: O Valor R é o Coeficiente de Correlação de Pearson.
+
+    Tabela com valores de referência para o Coeficiente de Pearson:
+
+    0.9 para mais ou para menos indica uma correlação muito forte.
+    0.7 a 0.9 positivo ou negativo indica uma correlação forte.
+    0.5 a 0.7 positivo ou negativo indica uma correlação moderada.
+    0.3 a 0.5 positivo ou negativo indica uma correlação fraca.
+    0 a 0.3 positivo ou negativo indica uma correlação desprezível.
+    

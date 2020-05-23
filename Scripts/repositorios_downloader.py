@@ -10,23 +10,19 @@ class ProgressPrinter(RemoteProgress):
         print("\nProgresso do download: ")
         print(int(cur_count), int(max_count), format((cur_count / (max_count or 100.0)*100), '.2f'))
 
-def exportar_log_downloads(repos_path, log_downloads):
-    path_logs = repos_path + r"\log_downloads.txt"
+def exportar_log_downloads(path_repo_linguagem, log_downloads):
+    path_logs = path_repo_linguagem + r"\log_downloads.txt"
     file = open(path_logs, "w+")  
     file.write(log_downloads)
     file.close
 
-def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
-    repos_path = path + r"Repositorios"
-
-    repos_baixados_list_path = []
+def baixar_repositorios(nome_linguagem, repos_path, repositorios, deseja_mostrar_progresso_download):
+    path_repo_linguagem = repos_path + nome_linguagem + "\\"
     
-    try:
-        os.mkdir(repos_path)
-        print("\nDiretório ", repos_path, "criado.\n")
-    except FileExistsError:
-        print("\nDiretório:", repos_path, "não foi criado pois já existe.\n")
-
+    if not os.path.exists(path_repo_linguagem):
+        os.mkdir(path_repo_linguagem)
+    
+    repos_baixados_list_path = []
     count_repos_baixados = 0
     log_downloads = ""
 
@@ -34,7 +30,7 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
         count_repos_baixados += 1
         splitted_repo = repositorio.split(',')
         nome_repositorio = splitted_repo[1]
-        path_repo_baixado = repos_path + "\\" + "{:04n}".format(count_repos_baixados) + "_" + nome_repositorio
+        path_repo_baixado = path_repo_linguagem + "{:04n}".format(count_repos_baixados) + "_" + nome_repositorio
 
         repos_baixados_list_path.append(path_repo_baixado)
 
@@ -67,7 +63,7 @@ def baixar_repositorios(path, repositorios, deseja_mostrar_progresso_download):
 
     print("\nO script de download de repositórios foi finalizado normalmente.")
     print(f"\nLembre-se de deletar os repositórios em: {repos_path}!")
-    exportar_log_downloads(repos_path, log_downloads)
+    exportar_log_downloads(path_repo_linguagem, log_downloads)
     time.sleep(3)
     return repos_baixados_list_path
     
