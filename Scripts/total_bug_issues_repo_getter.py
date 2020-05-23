@@ -45,7 +45,8 @@ def get_repos_total_bug_issues(repositorios, headers, query):
             repos_com_bug_issues.append(repositorios[i] + "," + str(quantidade_bug_issues_repositorio) + "," + datetime.strftime(issues_maior_updated_at, f"%d/%m/%y"))
         else:
             continue
-        
+    
+    print(f"\nForam recuperados {str(len(repos_com_bug_issues))} repositórios com informações de coverage e que continham BUG Issues.")
     print("\nA etapa de recuperação de bug issues dos repositórios foi finalizada.") 
     return repos_com_bug_issues
 
