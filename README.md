@@ -1,4 +1,12 @@
-### Análise da efetividade de testes unitários nos projetos JavaScript mais populares que possuem badge de coverage
+### Análise da efetividade de testes unitários nos projetos de linguagens populares no GitHub que possuem badge de coverage e BUG Issues
+
+#### Linguagens analisadas
+
+- JavaScript
+- Python
+- Java
+- C#
+- Go
 
 #### Contexto do trabalho
 
