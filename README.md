@@ -14,6 +14,10 @@ Com o conceito de testes unitários em alta, o estudo do seu impacto nos softwar
 
 #### Resultados bem como a metodologia deste trabalho podem ser visualizados na documentação final commitada no GitHub [aqui](https://github.com/MateusSantosFonseca/TISVI-Analise-Efetividade-Testes-Unitarios/blob/master/Documentacao_Final.pdf), ou então através do próprio Overleaf, clicando [aqui](https://pt.overleaf.com/read/zvjsnjyccdtn).
 
+#### Apresentação do trabalho
+
+Link apresentação do trabalho no youtube: https://youtu.be/00ftYGTXCzs
+
 #### Contexto do trabalho
 
 Projeto de pesquisa e desenvolvimento elaborado para a disciplina de Trabalho Interdisciplinar de Software VI, referente ao 6° período do curso de Engenharia de Software da PUC-MG.
